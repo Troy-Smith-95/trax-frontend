@@ -1,7 +1,14 @@
 import './LandingPage.scss';
 
 function LandingPage() {
-    return
+    return (
+        <>
+        <div className='landingPage'>
+            
+
+        </div>
+        </>
+    );
 }
 
 export default LandingPage;

@@ -20,3 +20,28 @@
         @content;
     }
 }
+@keyframes modalOpen {
+    from {
+        width: 0;
+    }
+    to {
+        width: 18rem;
+    }
+}
+
+@keyframes modalElements {
+    0% {
+        opacity: 0;
+        cursor: auto;
+    }
+    40% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
