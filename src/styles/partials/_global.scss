@@ -7,13 +7,19 @@
   }
   
   body {
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial';
     font-style: normal;
     font-weight: 400;
     font-size: 0.813rem;
     margin: 0;
     color: $primary-colour-text;
-
+    height: 100vh;
+    /* Create the parallax scrolling effect */
+    background: conic-gradient(from 112.85deg at 23.75% 100%, rgba(29, 185, 84, 0.82) 0deg, #384062 97.5deg, rgba(12, 10, 62, 0.83) 187.5deg, rgba(14, 29, 64, 0.830617) 240.6deg, rgba(15, 40, 66, 0.830986) 264.38deg, rgba(29, 185, 84, 0.82) 360deg), #000000;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     @include tablet {
         font-size: .875rem;
     }

@@ -1,0 +1,104 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.hero {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        padding: 1.5rem;
+    }
+
+    @include desktop {
+        width: 63.75rem;
+        margin: 0 auto;
+        padding: 0;
+        height: 45rem;
+    }
+
+    &__container {
+        margin-bottom: 3rem;
+
+        @include tablet{
+            margin: 0 1rem 0 0;
+        }
+    }
+
+    &__tagline {
+        font-size: 2.5rem;
+        line-height: 3rem;
+        width: 60%;
+        margin: 1.5rem 0 1rem 0;
+
+        @include tablet {
+            width: 100%;
+            margin: 0 0 1rem 0;
+            font-size: 3rem;
+            line-height: 3.5rem;
+        }
+
+        @include desktop {
+            width: 40%;
+        }
+    }
+
+    &__text {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin: 0 0 2rem 0;
+        width: 75%;
+
+        @include tablet {
+            width: 100%;
+        }
+
+        @include desktop {
+            width: 50%;
+        }
+    }
+
+    &__cta {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 2.75rem 0;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $primary-colour-text;
+        text-transform: uppercase;
+        font-weight: 500;
+        background-color: $primary-colour-cta;
+        width: 50%;
+        height: 2.5rem;
+        padding: 0.75rem 1.9rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background-color: $primary-colour-hover;
+        }
+
+    }
+
+    &__img {
+        width: 25rem;
+        margin-right: -1rem;
+
+        @include tablet {
+            margin-right: -1.5rem;
+        }
+
+        @include desktop {
+            position: absolute;
+            right: 0;
+            top: 10rem;
+            width: 45%;
+            max-width: 60rem;
+        }
+    }
+}
