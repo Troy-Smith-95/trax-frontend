@@ -84,6 +84,16 @@
     }
 }
 
+@keyframes buttonHover {
+    from {
+        background-color: $primary-colour-cta;
+    }
+
+    to {
+        background-color: $primary-colour-hover;
+    }
+}
+
 @keyframes modalClose {
     from {
         width: 18rem;

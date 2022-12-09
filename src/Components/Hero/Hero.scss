@@ -70,7 +70,6 @@
     &__link {
         text-decoration: none;
         color: $primary-colour-text;
-        text-transform: uppercase;
         font-weight: 500;
         background-color: $primary-colour-cta;
         width: 50%;
@@ -80,6 +79,7 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
         &:hover {
+            animation: buttonHover 0.25s ease-in-out;
             background-color: $primary-colour-hover;
         }
 

@@ -17,8 +17,13 @@ function Dashboard({ setLocation }) {
         <>
             <div className='dashboard'>
                 <DashboardNav />
-                {location.pathname === '/dashboard' ? <Analysis/> : ''}
-                {location.pathname === '/inspiration' ? <Inspiration /> : ''}
+                <div className='dashboard__page'>
+                    <div className='dashboard__content'>
+                        {location.pathname === '/dashboard' ? <Analysis /> : ''}
+                        {location.pathname === '/inspiration' ? <Inspiration /> : ''}
+                    </div>
+                </div>
+
 
             </div>
 

@@ -1,5 +1,5 @@
 @use '../../styles/partials/mixins' as *;
-
+@use '../../styles/partials/variables' as *;
 
 .dashboard {
     display: flex;
@@ -7,5 +7,17 @@
 
     @include tablet {
         flex-direction: row;
+    }
+
+    &__page {
+        width: 100%;
+        
+        padding: 1rem;
+    }
+
+    &__content {
+        width: 100%;
+        background-color: $primary-colour-background;
+        border-radius: 1rem;
     }
 }

@@ -1,0 +1,21 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.analysis {
+    padding: 1rem;
+
+    &__selector {
+        background-color: $primary-colour-cta;
+        border: none;
+        color: $primary-colour-text;
+        background-image: url('../../assets/icons/genre_icon.svg'), url('../../assets/icons/arrow_down.svg');
+        background-repeat: no-repeat;
+        background-size: 1.25rem;
+        background-position: left 0.75rem center, right 0.4rem center;
+        padding: 0.75rem 1rem 0.75rem 2rem;
+        border-radius: 0.75rem;
+        width: 10rem;
+        text-align: center;
+        appearance: none;
+    }
+}

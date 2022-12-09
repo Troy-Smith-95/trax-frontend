@@ -140,6 +140,7 @@
         }
 
         &:hover {
+            animation: buttonHover 0.25s ease-in-out;
             background-color: $primary-colour-hover;
         }
     }
