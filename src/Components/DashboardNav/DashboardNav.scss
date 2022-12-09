@@ -39,9 +39,7 @@
         display: none;
         width: 18rem;
         min-height: 100vh;
-        // position: absolute;
-        // top: 0;
-        // left: 0;
+        overflow: scroll;
         padding: 1.5rem;
         background-color: $primary-colour-background;
         animation: modalOpen 0.75s ease;
