@@ -2,12 +2,22 @@ import './Header.scss';
 import mobileNavIcon from '../../assets/icons/mobile_nav_icon.svg';
 import genreIcon from '../../assets/icons/genre_icon.svg';
 import exitIcon from '../../assets/icons/exit.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header() {
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalClosing, setModalClosing] = useState(false);
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        setTimeout(() => {
+            setModalOpen(false);
+            setModalClosing(false);
+        }, 400)
+    }, [modalClosing]);
+    
+
     return (
         <>
             <header className='header'>
@@ -27,12 +37,12 @@ function Header() {
                     </nav>
                 </div>
             </header>
-            {modalOpen ? <div className="header__modal">
+            {modalOpen ? <div className={`${modalClosing ? "header__modal header__modal--closing" : "header__modal"}`}>
                 <div className='header__closeAlignment'>
-                    <img onClick={() => { setModalOpen(false) }} className='header__closeModal' src={exitIcon} alt="Exit" />
+                    <img onClick={() => { setModalClosing(true) }} className={`${modalClosing ? "header__closeModal header__closeModal--closing" : "header__closeModal"}`} src={exitIcon} alt="Exit" />
                 </div>
                 <nav className='header__nav'>
-                    <div className='header__navOptions'>
+                    <div className={`${modalClosing ? "header__navOptions header__navOptions--closing" : "header__navOptions"}`}>
                         <NavLink to='/dashboard' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Dashboard</NavLink>
                         <NavLink to='/about' onClick={() => { setModalOpen(false) }} className='header__link header__link--top'>About</NavLink>
                         <NavLink to='/contact' onClick={() => { setModalOpen(false) }} className='header__link'>Contact Us</NavLink>

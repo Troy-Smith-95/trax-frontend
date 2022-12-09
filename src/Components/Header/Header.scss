@@ -70,12 +70,17 @@
 
     &__modal {
         width: 18rem;
-        height: 100vh;
+        min-height: 100vh;
         position: absolute;
         top: 0;
         padding: 1rem;
         background-color: $primary-colour-background;
         animation: modalOpen 0.75s ease;
+
+        &--closing {
+            animation: modalClose 0.75s ease;
+            width: 0;
+        }
     }
 
     &__closeAlignment {
@@ -88,6 +93,11 @@
         margin: 0;
         animation: modalElements 0.9s ease-in-out;
 
+        &--closing {
+            animation: modalElementsClose 0.25s ease-in-out;
+            opacity: 0;
+        }
+
         &:hover {
             cursor: pointer;
         }
@@ -98,6 +108,11 @@
         flex-direction: column;
         padding-top: 1rem;
         animation: modalElements 0.9s ease-in-out;
+
+        &--closing {
+            animation: modalElementsClose 0.25s ease-in-out;
+            opacity: 0;
+        }
 
         @include tablet {
             flex-direction: row;
@@ -154,6 +169,7 @@
         }
 
         &:hover {
+            animation: navHover 0.25s ease-in-out;
             color: $primary-colour-text;
         }
     }

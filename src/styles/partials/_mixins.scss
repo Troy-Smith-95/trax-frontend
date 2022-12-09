@@ -20,10 +20,12 @@
         @content;
     }
 }
+
 @keyframes modalOpen {
     from {
         width: 0;
     }
+
     to {
         width: 18rem;
     }
@@ -34,14 +36,60 @@
         opacity: 0;
         cursor: auto;
     }
+
     40% {
         opacity: 0;
     }
+
     90% {
         opacity: 0.8;
     }
+
     100% {
         opacity: 1;
         cursor: pointer;
+    }
+}
+
+@keyframes modalElementsClose {
+    from {
+        opacity: 1;
+        cursor: auto;
+    }
+    to {
+        opacity: 0;
+    }
+
+}
+
+@keyframes menuHover {
+    from {
+        background-color: none;
+        opacity: 0.5;
+    }
+
+    to {
+        background-color: $primary-colour-cta;
+        opacity: 1;
+    }
+}
+
+@keyframes navHover {
+    from {
+        color: $secondary-colour-text
+    }
+
+    to {
+        color: $primary-colour-text;
+    }
+}
+
+@keyframes modalClose {
+    from {
+        width: 18rem;
+    }
+
+    to {
+        width: 0;
     }
 }

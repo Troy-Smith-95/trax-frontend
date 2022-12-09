@@ -1,0 +1,11 @@
+@use '../../styles/partials/mixins' as *;
+
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+    }
+}
