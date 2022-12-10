@@ -86,33 +86,38 @@ function Analysis() {
                     <AudioFeatureBar feature={'Liveness'} value={audioFeatures ? audioFeatures[0].liveness : 0} />
                     <AudioFeatureBar feature={'Speechiness'} value={audioFeatures ? audioFeatures[0].speechiness : 0} />
                 </div>
-                <div className='analysis__otherData'>
-                    <img className='analysis__infoIcon' src={infoIcon} alt="Info Icon" />
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Duration</h3>
-                        <p className='analysis__value'>{audioFeatures ? `${Math.floor(audioFeatures[0].duration_ms / 1000 / 60)}m ${Math.floor((audioFeatures[0].duration_ms / 1000) % 60)}s` : '-'}</p>
+                <div className='analysis__container'>
+                    <div className='analysis__otherFeatures'>
+                        <img className='analysis__infoIcon' src={infoIcon} alt="Info Icon" />
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Duration</h3>
+                            <p className='analysis__value'>{audioFeatures ? `${Math.floor(audioFeatures[0].duration_ms / 1000 / 60)}m ${Math.floor((audioFeatures[0].duration_ms / 1000) % 60)}s` : '-'}</p>
+                        </div>
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Time Signature</h3>
+                            <p className='analysis__value'>{audioFeatures ? `${audioFeatures[0].time_signature}/4` : '-'}</p>
+                        </div>
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Modality</h3>
+                            <p className='analysis__value'>{audioFeatures ? `${audioFeatures[0].mode === 0 ? 'Minor' : 'Major'}` : '-'}</p>
+                        </div>
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Tempo</h3>
+                            <p className='analysis__value'>{audioFeatures ? audioFeatures[0].tempo.toFixed(2) : '-'}</p>
+                        </div>
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Loudness</h3>
+                            <p className='analysis__value'>{audioFeatures ? audioFeatures[0].loudness.toFixed(2) : '-'}</p>
+                        </div>
+                        <div className='analysis__data'>
+                            <h3 className='analysis__feature'>Key</h3>
+                            <p className='analysis__value'>{audioFeatures ? key : '-'}</p>
+                        </div>
                     </div>
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Time Signature</h3>
-                        <p className='analysis__value'>{audioFeatures ? `${audioFeatures[0].time_signature}/4` : '-'}</p>
-                    </div>
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Modality</h3>
-                        <p className='analysis__value'>{audioFeatures ? `${audioFeatures[0].mode === 0 ? 'Minor' : 'Major'}` : '-'}</p>
-                    </div>
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Tempo</h3>
-                        <p className='analysis__value'>{audioFeatures ? audioFeatures[0].tempo.toFixed(2) : '-'}</p>
-                    </div>
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Loudness</h3>
-                        <p className='analysis__value'>{audioFeatures ? audioFeatures[0].loudness.toFixed(2) : '-'}</p>
-                    </div>
-                    <div className='analysis__data'>
-                        <h3 className='analysis__feature'>Key</h3>
-                        <p className='analysis__value'>{audioFeatures ? key : '-'}</p>
-                    </div>
+                    <div className='analysis__trends'>
+                        <h2 className='analysis__title'>Trends</h2>
 
+                    </div>
                 </div>
             </div>
         </section>
