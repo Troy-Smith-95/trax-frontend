@@ -18,7 +18,7 @@
     &__content {
         width: 100%;
         height: 96vh;
-        overflow: scroll;
+        overflow: auto;
         background-color: $primary-colour-background;
         border-radius: 1rem;
     }
