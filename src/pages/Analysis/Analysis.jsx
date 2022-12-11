@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AudioFeatureBar from '../../Components/AudioFeatureBar/AudioFeatureBar';
 import infoIcon from '../../assets/icons/info_icon.svg';
+import LineChart from '../../Components/LineChart/LineChart';
 const URL = 'http://localhost:8080';
 
 function Analysis() {
@@ -10,6 +11,7 @@ function Analysis() {
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [audioFeatures, setAudioFeatures] = useState(null);
     const [key, setKey] = useState(null);
+    const [labels, setLabels] = useState(null);
 
     useEffect(() => {
         axios.get(URL + '/genres').then((response) => {
@@ -25,12 +27,24 @@ function Analysis() {
             console.log(genre);
             axios.get(`${URL}/genres/${genre[0].id}/audio-features`).then((response) => {
                 console.log(response);
+                createLabels(response.data);
                 determineKey(response.data[0].key);
                 setAudioFeatures(response.data);
             })
         }
 
     }, [selectedGenre]);
+
+    //Create the lables for the x-axis of line charts
+    function createLabels(weeks) {
+        const labelsArray = [];
+        weeks.forEach((week) => {
+            const date = new Date(week.created_at).toString().split(' ');
+            const label = `${date[0]} ${date[1]} ${date[2]} ${date[3]}`;
+            labelsArray.unshift(label);
+        });
+        setLabels(labelsArray);
+    }
 
     function determineKey(keyValue) {
         if (keyValue === 0) {
@@ -116,6 +130,10 @@ function Analysis() {
                     </div>
                     <div className='analysis__trends'>
                         <h2 className='analysis__title'>Trends</h2>
+                        <div className='analysis__chart'>
+                            {audioFeatures ? <LineChart labels={labels} /> : ''}
+
+                        </div>
 
                     </div>
                 </div>

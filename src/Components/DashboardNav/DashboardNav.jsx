@@ -26,6 +26,7 @@ function DashboardNav() {
             <header className='dashboardNav'>
                 <div className='dashboardNav__container'>
                     <img onClick={() => { setModalOpen(true) }} className={`dashboardNav__navIcon ${modalOpen ? "dashboardNav__navIcon--none" : ""}`} src={mobileNavIcon} alt="Nav Icon" />
+                    <div className='dashboardNav__wrapper'>
                         <div className='dashboardNav__bar'>
                             <div className="dashboardNav__logo">
                                 <img className='dashboardNav__icon' src={genreIcon} alt="Genre Icon" />
@@ -56,6 +57,7 @@ function DashboardNav() {
                                 </div>
                             </nav>
                         </div>
+                    </div>
                 </div>
             </header>
             {modalOpen ? <div className={`${modalClosing ? "dashboardNav__modal dashboardNav__modal--closing" : "dashboardNav__modal"}`}>
