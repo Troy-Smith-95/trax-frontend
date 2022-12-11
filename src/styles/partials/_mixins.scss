@@ -103,3 +103,29 @@
         width: 0;
     }
 }
+
+@keyframes leftArrow {
+    0% {
+        left: 13.5rem;
+    }
+
+    50% {
+        left: 13rem;
+    }
+    100% {
+        left: 13.5rem;
+    }
+}
+
+@keyframes upArrow {
+    0% {
+        top: 6.5rem;
+    }
+
+    50% {
+        top: 6rem;
+    }
+    100% {
+        top: 6.5rem;
+    }
+}
