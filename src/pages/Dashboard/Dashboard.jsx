@@ -35,10 +35,11 @@ function Dashboard({ setLocation }) {
                                 </>
                                 : ""}
                             {explainedStep1 ? <div className='dashboard__explainFeatures'>
-                                <p className='dashboard__text'>View average audio feature of the current week</p>
+                                <p className='dashboard__text'>View average audio features of the current week for a given genre</p>
                                 <p className='dashboard__text'>Click on the <img className='dashboard__infoIcon' src={infoIcon} alt='info'/> icon to learn more about a specific audio feature</p>
                                 <p className='dashboard__text'>See how the audio features change from week to week in the trends section</p>
-                                <p className='dashboard__text'>Click audio features at bottom of trends chart to remove them</p>
+                                <p className='dashboard__text'>Click audio features at the bottom of the trends chart to remove them</p>
+                                <p className='dashboard__text'>Learn more about Spotify Audio Features <a className='dashboard__link' target='_blank' rel="noreferrer"  href='https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features'>HERE</a></p>
                             </div> : ''}
                         </div> : ''}
                     </div>
