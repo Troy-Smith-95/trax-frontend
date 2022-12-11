@@ -21,7 +21,7 @@ function Dashboard({ setLocation }) {
     return (
         <>
             <div className='dashboard'>
-                <DashboardNav />
+                <DashboardNav/>
                 <div className='dashboard__page'>
                     <div className='dashboard__content'>
                         {location.pathname === '/dashboard' ? <Analysis explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} /> : ''}
