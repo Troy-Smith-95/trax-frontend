@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../../Components/Hero/Hero';
+import WeeklyStats from '../../Components/WeeklyStats/WeeklyStats';
 import './LandingPage.scss';
 
 function LandingPage({setLocation}) {
@@ -15,7 +16,7 @@ function LandingPage({setLocation}) {
         <>
         <div className='landingPage'>
             <Hero/>
-
+            <WeeklyStats/>
         </div>
         </>
     );
