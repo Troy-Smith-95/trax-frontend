@@ -24,18 +24,22 @@
         }
     }
 
-    &__container {
+    &__box {
         background-color: $primary-colour-background;
         padding: 2.5rem 2rem 1rem 2rem;
         border-radius: 2rem;
         width: 80%;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
 
         @include desktop {
             width: 90%;
         }
+    }
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
     &__statContainer {
