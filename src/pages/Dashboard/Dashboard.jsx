@@ -26,7 +26,7 @@ function Dashboard({ setLocation }) {
                     <div className='dashboard__content'>
                         {location.pathname === '/dashboard' ? <Analysis explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} /> : ''}
                         {location.pathname === '/inspiration' ? <Inspiration /> : ''}
-                        {explained ? <div className='dashboard__explained'>
+                        {explained ? <div className='dashboard__explained' onClick={() => {setExplained(false)}}>
                             {!explainedStep1 ?
                                 <>
                                     <img className='dashboard__leftArrow' src={leftArrow} alt="Left Arrow" />

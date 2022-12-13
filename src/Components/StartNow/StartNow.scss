@@ -1,0 +1,62 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.startNow {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+
+    &__iconContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon {
+        width: 3rem;
+
+        @include tablet {
+            width: 5rem;
+        }
+    }
+
+    &__text {
+        text-align: center;
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        line-height: 2rem;
+
+        @include tablet {
+            font-size: 2.25rem;
+            margin: 1.5rem 0;
+        }
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $primary-colour-text;
+        font-weight: 500;
+        background-color: $primary-colour-cta;
+        width: 12rem;
+        text-align: center;
+        height: 2.5rem;
+        padding: 0.75rem 1.9rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            animation: buttonHover 0.25s ease-in-out;
+            background-color: $primary-colour-hover;
+        }
+
+    }
+}

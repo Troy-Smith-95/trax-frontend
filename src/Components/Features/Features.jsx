@@ -47,8 +47,6 @@ function Features() {
                     <p className='features__text'>Trax can generate playlists and save them right to your Spotify based on a specific sound profile to help give you some inspiration for your next track.</p>
                 </div>
             </div>
-
-
         </section>
     );
 }

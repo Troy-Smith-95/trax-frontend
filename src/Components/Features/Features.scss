@@ -3,9 +3,18 @@
 
 .features {
     width: 100%;
-    padding: 5rem;
+    padding: 1rem;
     background-color: $primary-colour-background;
     margin-bottom: 5rem;
+
+    @include tablet {
+        padding: 3rem;
+    }
+
+    @include desktop {
+        padding: 5rem;
+
+    }
 
     &__feature {
         display: flex;
@@ -62,22 +71,29 @@
     }
 
     &__dataGraphic {
-        width: 60%;
+        width: 80%;
         margin-bottom: 2rem;
+
+        @include tablet {
+            width: 60%;
+        }
 
         &--one {
             position: relative;
-            left: 5rem;
+            left: 2.5rem;
+
+            @include tablet {
+                left: 5rem;
+            }
         }
 
         &--two {
             position: relative;
-            left: 10rem;
-        }
-
-        &--one {
-            position: relative;
             left: 5rem;
+
+            @include tablet {
+                left: 10rem;
+            }
         }
     }
 
@@ -113,6 +129,7 @@
         width: 100%;
         line-height: 3rem;
         margin: 2rem 0;
+        text-align: center;
 
         @include desktop {
             font-size: 3rem;
@@ -129,6 +146,7 @@
         line-height: 2.5rem;
         width: 100%;
         margin: 0;
+        text-align: center;
 
         @include desktop {
             width: 85%;
