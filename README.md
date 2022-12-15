@@ -7,9 +7,11 @@ Trax was developed for musicians that are in the process of making new music. Th
 
 ## Screenshots
 
-## Landing Page
+Landing Page
 
 ![Landing Page](https://user-images.githubusercontent.com/114879201/207756585-93c3acb3-5e5b-4a07-9c9b-c39d5265f219.png)
+
+Dashboard
 
 ![Dasboard](https://user-images.githubusercontent.com/114879201/207756636-3e6f2b51-5677-4d7d-aa6a-1f8ef14cb733.png)
 
