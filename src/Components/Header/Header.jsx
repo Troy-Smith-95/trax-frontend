@@ -10,6 +10,7 @@ function Header() {
     const [modalClosing, setModalClosing] = useState(false);
     const navigate = useNavigate();
     
+    //Delays the closing of the modal menu on mobile so the animation can play out
     useEffect(() => {
         setTimeout(() => {
             setModalOpen(false);
@@ -37,6 +38,7 @@ function Header() {
                     </nav>
                 </div>
             </header>
+            {/* Modal for navigation in mobile  */}
             {modalOpen ? <div className={`${modalClosing ? "header__modal header__modal--closing" : "header__modal"}`}>
                 <div className='header__closeAlignment'>
                     <img onClick={() => { setModalClosing(true) }} className={`${modalClosing ? "header__closeModal header__closeModal--closing" : "header__closeModal"}`} src={exitIcon} alt="Exit" />
@@ -49,7 +51,6 @@ function Header() {
                         <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>FAQ</NavLink>
                     </div>
                 </nav>
-
             </div> : ""}
         </>
     );

@@ -8,7 +8,7 @@ import exitIcon from '../../assets/icons/exit.svg';
 
 const URL = process.env.REACT_APP_URL;
 
-function Analysis({ explained, setExplained, explainedStep1, setExplainedStep1 }) {
+function Analysis({ explained, setExplained, setExplainedStep1 }) {
     const [genres, setGenres] = useState(null);
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [audioFeatures, setAudioFeatures] = useState(null);
@@ -16,6 +16,7 @@ function Analysis({ explained, setExplained, explainedStep1, setExplainedStep1 }
     const [trends, setTrends] = useState(null);
     const [moreInfo, setMoreInfo] = useState(false);
 
+    //Calls to retrieve data to populate dashboard
     useEffect(() => {
         axios.get(URL + '/genres').then((response) => {
             console.log(response.data);
@@ -120,6 +121,7 @@ function Analysis({ explained, setExplained, explainedStep1, setExplainedStep1 }
             return mostOccuranceKey;
         }
     
+        //Convert the musical key value from the backend into somehting useful for users on the front end
         async function determineKey(keyValue) {
             if (keyValue === 0) {
                 setKey('C');
@@ -163,6 +165,7 @@ function Analysis({ explained, setExplained, explainedStep1, setExplainedStep1 }
             }
         }
     
+        //Descriptions for the various audio features
         const info = [
             {
                 feature: 'Acousticness',

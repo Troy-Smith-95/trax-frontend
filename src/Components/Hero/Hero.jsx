@@ -12,7 +12,6 @@ function Hero() {
                 <Link to='/dashboard' className='hero__link'>Go to Dashboard</Link>
             </div>
             <img className='hero__img' src={heroImage} alt="Trax Dashboard" />
-
         </section>
     );
 }

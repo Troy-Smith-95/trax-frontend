@@ -10,6 +10,7 @@ import './Dashboard.scss';
 
 function Dashboard({ setLocation }) {
     const location = useLocation();
+    //States to control the how to us tutorial
     const [explained, setExplained] = useState(false);
     const [explainedStep1, setExplainedStep1] = useState(false);
 
@@ -24,8 +25,10 @@ function Dashboard({ setLocation }) {
                 <DashboardNav/>
                 <div className='dashboard__page'>
                     <div className='dashboard__content'>
+                        {/* Navigation within the dashboard */}
                         {location.pathname === '/dashboard' ? <Analysis explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} /> : ''}
                         {location.pathname === '/inspiration' ? <Inspiration /> : ''}
+                        {/* Overlay to explain how to use dashboard */}
                         {explained ? <div className='dashboard__explained' onClick={() => {setExplained(false)}}>
                             {!explainedStep1 ?
                                 <>
@@ -45,9 +48,7 @@ function Dashboard({ setLocation }) {
                     </div>
                 </div>
             </div>
-
         </>
-
     );
 
 }

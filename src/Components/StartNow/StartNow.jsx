@@ -6,7 +6,7 @@ function StartNow() {
     return (
         <section className='startNow'>
             <div className='startNow__iconContainer'>
-                    <img className='startNow__icon' src={genreIcon} alt="Genre Icon" />
+                <img className='startNow__icon' src={genreIcon} alt="Genre Icon" />
             </div>
             <h2 className='startNow__text'>Take the next step with your music</h2>
             <h2 className='startNow__text'>Get started with Trax now!</h2>

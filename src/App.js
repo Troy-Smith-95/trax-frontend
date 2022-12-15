@@ -9,11 +9,13 @@ import FAQPage from './pages/FAQPage/FAQPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
+  //State to determine which page is currently active
   const [location, setLocation] = useState();
   
   return (
     <BrowserRouter>
     <div className='app'>
+    {/* Conditionally render the header depending on where the location is (header isn't rendered on dashboard)  */}
     {location === '/' || location === '/about' || location === '/contact' || location === '/faq'? <Header/>: ''}
       <Routes>
           <Route path='/' element={<LandingPage setLocation={setLocation}/>} />
@@ -24,6 +26,7 @@ function App() {
           <Route path='/inspiration' element={<Dashboard setLocation={setLocation}/>}/>
           <Route path='/saved-music' element={<Dashboard setLocation={setLocation}/>}/>
           <Route path='/settings' element={<Dashboard setLocation={setLocation}/>}/>
+          <Route path='/*' element={<LandingPage setLocation={setLocation}/>} />
       </Routes>
       </div>
     </BrowserRouter>

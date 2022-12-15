@@ -7,6 +7,7 @@ import genreIcon from '../../assets/icons/genre_icon.svg';
 
 function WeeklyStats() {
 
+    //For animations using framer library
     const statsVariant = {
         visible: {
             opacity: 1, scale: 1,

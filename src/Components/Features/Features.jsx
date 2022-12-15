@@ -18,6 +18,7 @@ import { useState } from 'react';
 function Features() {
     const [isHovered, setIsHovered] = useState(false);
 
+    //For animations based on mouseover/hover
     function handleMouseEnter() {
         setIsHovered(true);
     }
@@ -25,10 +26,13 @@ function Features() {
     function handleMouseLeave() {
         setIsHovered(false);
     }
+
+    //For lottie files
     const style = {
         height: 100,
     };
     
+    //For animations using framer
     const item = {
         hidden: { opacity: 0, x: -100 },
         visible: { opacity: 1, x: 0, transition: { duration: 1 } }
@@ -105,6 +109,7 @@ function Features() {
                 </div>
             </div>
             <div className='features__feature'>
+              {/* Only have animations play when at desktop screen size */}
                 <div className='features__graphic--flexCenter' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <motion.img variants={albumOne} animate={isHovered && window.innerWidth >= 1280 ? "hover" : "initial"} transition={{ delay: 0.1 }} className='features__playlistGraphic' src={playlist1Icon} alt="acousticness" />
                     <motion.img variants={albumTwo} animate={isHovered && window.innerWidth >= 1280 ? "hover" : "initial"} transition={{ delay: 0.1 }} className='features__playlistGraphic' src={playlist2Icon} alt="danceability" />

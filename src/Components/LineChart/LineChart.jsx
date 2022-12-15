@@ -47,10 +47,14 @@ function LineChart({trends}) {
         },
     };
 
+    //For dynamic data
     const labels = trends.labels;
-    
+
+    //For mock data
     // const labels = ['Oct 20', 'Oct 27', 'Nov 4', 'Nov 11', 'Nov 18', 'Nov 25', 'Dec 1'];
 
+
+    //For dynamic data
     const data = {
         labels,
         datasets: [
@@ -117,6 +121,7 @@ function LineChart({trends}) {
         ],
     };
     
+    //For mock data
     // const data = {
     //     labels,
     //     datasets: [
