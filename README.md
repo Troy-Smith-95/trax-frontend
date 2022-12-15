@@ -18,7 +18,7 @@ Dashboard
 
 ## Tech Stack
 
-**Client:** React, Axios, SASS, Chart.js, framer
+**Client:** React, Axios, Sass, Chart.js, framer
 
 **Server:** Node, Express, Knex, MySQL2, Axios, Spotify API
 
