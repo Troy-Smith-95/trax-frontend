@@ -5,11 +5,13 @@ Trax leverages the Spotify API to obtain the audio anaylsis of thousands of popu
 
 Trax was developed for musicians that are in the process of making new music. They can gain valuable insights into how their genre may be changing and adapt their music accordingly. This could mean making their song duration more closely match the average, make their music more energetic etc. Trax in a future update will also be able to generate playlists based on a specific audio profile so artists can find new musical influces or explore new sounds.
 
-Screenshots
+## Screenshots
 
-<img width="1919" alt="trax-landing-page" src="https://user-images.githubusercontent.com/114879201/207756585-93c3acb3-5e5b-4a07-9c9b-c39d5265f219.png">
+## Landing Page
 
-<img width="1918" alt="trax-dashboard" src="https://user-images.githubusercontent.com/114879201/207756636-3e6f2b51-5677-4d7d-aa6a-1f8ef14cb733.png">
+![Landing Page](https://user-images.githubusercontent.com/114879201/207756585-93c3acb3-5e5b-4a07-9c9b-c39d5265f219.png)
+
+![Dasboard](https://user-images.githubusercontent.com/114879201/207756636-3e6f2b51-5677-4d7d-aa6a-1f8ef14cb733.png)
 
 
 ## Tech Stack
