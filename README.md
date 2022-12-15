@@ -1,70 +1,177 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Trax
 
-## Available Scripts
+Trax leverages the Spotify API to obtain the audio anaylsis of thousands of popular tracks within different genres and averages them by genre on a weekly basis. This anaylsis can then be viewed on the front end in a clean and consise manner. 
 
-In the project directory, you can run:
+Trax was developed for musicians that are in the process of making new music. They can gain valuable insights into how their genre may be changing and adapt their music accordingly. This could mean making their song duration more closely match the average, make their music more energetic etc. Trax in a future update will also be able to generate playlists based on a specific audio profile so artists can find new musical influces or explore new sounds.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Client:** React, Axios, SASS, Chart.js, framer
 
-### `npm run build`
+**Server:** Node, Express, Knex, MySQL2, Axios, Spotify API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Pulls data for thousands of songs via spotify API while handling any errors to make sure data collection completes without crashing
+- Averages out the data for thousands of songs to generate weekly insights and trends
+- Uses progress bars and charts to cleanly display data
+- How to feature explains the platform to the user
+- Infomation icons in dashboard provide the user more context on specific features
+- Reponsive design from mobile to desktop
+- Animations on navigation menu and other elements to elevate user experience
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API Reference
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Get all genres
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```http
+  GET /genres
+```
 
-## Learn More
+Return:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[
+    {
+        id: 1, 
+        genre_name: 'Hip-Hop', 
+        slug: 'hip-hop'
+    },
+    ...
+]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Get genre audio features
 
-### Code Splitting
+```http
+  GET /genres/${id}/audio-features
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Parameter | Type      | Description                             |
+| :-------- | :-------  | :-------------------------------------  |
+| `id`      | `integer` | **Required**. Id of genre to fetch audio feature data |
 
-### Analyzing the Bundle Size
+Return:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[
+    {
+        acousticness: 0.200109,
+        created_at: 1670962563106,
+        danceability: 0.64718539,
+        duration_ms: 193080,
+        energy: 0.66188049,
+        genre_id: 2,
+        id: "a66b79cd-f1bd-4cfb-96a8-1fcf16505cc5",
+        instrumentalness: 0.01155671,
+        key: 2,
+        liveness: 0.1698139,
+        loudness: -5.94695616,
+        mode: 1,
+        speechiness: 0.07239707,
+        tempo: 125.5643158,
+        time_signature: 4,
+        valence: 0.50271881
+    },
+    ...
+]
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+For local Installation
 
-### Deployment
+Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Clone the project front end
 
-### `npm run build` fails to minify
+```bash
+  git clone git@github.com:Troy-Smith-95/trax-frontend.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Go to project directory
+
+```bash
+  cd trax-frontend
+```
+
+Install dependencies 
+
+```bash
+  npm i
+```
+
+Run project
+
+```bash
+  npm start
+```
+
+*Note: It may be beneficial for demo purposes to use mock data for chart. To do this, go to the LineChart.jsx file where there are the variables called labels and data. There are currently two sets of each variable, one active and one commented out. Switch the active and commented out variables to view the mock data. 
+
+Backend 
+
+Clone the project backend
+
+```bash
+  git clone git@github.com:Troy-Smith-95/trax-backend.git
+```
+
+Go to project directory
+
+```bash
+  cd trax-backend
+```
+Install dependencies 
+
+```bash
+  npm i
+```
+
+Create database with same name that you specify in .env  (I recommend using trax)
+
+Migrate tables
+
+```bash
+  npm run migrate
+```
+
+Seed tables 
+
+```bash
+  npm run seed
+```
+
+To collect data uncomment the following line of code in index.jsx. Re-comment that line of code to have the server run without collecting data
+
+```bash
+  populateData();
+```
+
+To run server
+
+```bash
+  npm run dev
+```
+
+*Note: An older verison of Axios (1.1.3) is used to work properly with the Spotify API. Additionally, it can take 15+ minutes to collect data due to the API calls being slowed to avoid hitting the rate limit
+
+
+## Lessons Learned
+
+I learned how to used async await to make my code run in a synchronous fashion as lots of operations in my backend require data from previous operations. I learned how to code robust error handling to make sure I could run thousands of API calls in a short period of time to collect data without crashing (this also involved accounting for rate limits). For exmaple, I wrapped a lot of my API calls in async funcitons and called them recursively if an error was thrown to try again (tries were tracked and recurisve calls terminated after a certain amount of times to avoid inifinte loops). I utilized chart.js for the first time and a progress bar library to display my data on the front end. The framer library to simplify certain animations. I gained further experince with keyframe animations and conditional rendering of components and classes. 
+
+## Roadmap
+
+- Add user login and third part sign-in/OAuth with Spotify
+
+- Add funcitonilty to search for other music (songs, albums, playlists) to analyze and compare against genres
+
+- Ability to save this music to your account to reference in the future
+
+- Add inspiration generator - ability to find new songs and generate playlists based around certain audio profiles to help artists find new influences
