@@ -38,7 +38,7 @@ Dashboard
 To run this project, you will need to add the following environment variables to your .env file
 
 In frontent:
-`REACT_API_URL`
+`REACT_APP_URL`
 
 In backend:
 `PORT`
