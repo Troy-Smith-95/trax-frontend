@@ -6,7 +6,7 @@ import infoIcon from '../../assets/icons/info_icon.svg';
 import LineChart from '../../Components/LineChart/LineChart';
 import exitIcon from '../../assets/icons/exit.svg';
 
-const URL = process.env.REACT_APP_URL;
+const URL = process.env.REACT_API_URL;
 
 function Analysis({ explained, setExplained, explainedStep1, setExplainedStep1 }) {
     const [genres, setGenres] = useState(null);
