@@ -16,14 +16,14 @@ Dashboard
 ![Dasboard](https://user-images.githubusercontent.com/114879201/207756636-3e6f2b51-5677-4d7d-aa6a-1f8ef14cb733.png)
 
 
-## Tech Stack
+## 👾 Tech Stack
 
 **Client:** React, Axios, Sass, Chart.js, framer
 
 **Server:** Node, Express, Knex, MySQL2, Axios, Spotify API
 
 
-## Features
+## 🎯 Features
 
 - Pulls data for thousands of songs via spotify API while handling any errors to make sure data collection completes without crashing
 - Averages out the data for thousands of songs to generate weekly insights and trends
@@ -33,9 +33,23 @@ Dashboard
 - Reponsive design from mobile to desktop
 - Animations on navigation menu and other elements to elevate user experience
 
+## 🔑 Environment Variables 
 
+To run this project, you will need to add the following environment variables to your .env file
 
-## API Reference
+In frontent:
+`REACT_API_URL`
+
+In backend:
+`PORT`
+`DB_NAME`
+`DB_USER`
+`DB_PASSWORD`
+`URL_TOKEN`
+`CLIENT_ID`
+`CLIENT_SECRET`
+
+## 🗺 API Reference
 
 #### Get all genres
 
@@ -90,7 +104,7 @@ Return:
 
 
 
-## Installation
+## ⚙️ Installation
 
 For local Installation
 
@@ -170,11 +184,11 @@ To run server
 *Note: An older verison of Axios (1.1.3) is used to work properly with the Spotify API. Additionally, it can take 15+ minutes to collect data due to the API calls being slowed to avoid hitting the rate limit
 
 
-## Lessons Learned
+## 🧑‍🎓 Lessons Learned
 
 I learned how to used async await to make my code run in a synchronous fashion as lots of operations in my backend require data from previous operations. I learned how to code robust error handling to make sure I could run thousands of API calls in a short period of time to collect data without crashing (this also involved accounting for rate limits). For exmaple, I wrapped a lot of my API calls in async funcitons and called them recursively if an error was thrown to try again (tries were tracked and recurisve calls terminated after a certain amount of times to avoid inifinte loops). I utilized chart.js for the first time and a progress bar library to display my data on the front end. The framer library to simplify certain animations. I gained further experince with keyframe animations and conditional rendering of components and classes. 
 
-## Roadmap
+## 🧭 Roadmap
 
 - Add user login and third part sign-in/OAuth with Spotify
 
