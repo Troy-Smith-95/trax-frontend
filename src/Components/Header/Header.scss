@@ -127,7 +127,7 @@
         text-decoration: none;
         color: $primary-colour-text;
         background-color: $primary-colour-cta;
-        width: 50%;
+        width: fit-content;
         height: 2.5rem;
         padding: 0.75rem 1.9rem;
         border-radius: 1.5rem;
@@ -149,7 +149,7 @@
         text-decoration: none;
         color: $secondary-colour-text;
         margin-bottom: 1rem;
-        width: 75%;
+        width: fit-content;
         white-space: nowrap;
 
         @include tablet {
@@ -167,6 +167,10 @@
             padding-right: 1.5rem;
             margin-right: 0;
             border-right: 1px solid $primary-colour-text;
+        }
+
+        &--login {
+            margin: 0 0 0 1.5rem;
         }
 
         &:hover {

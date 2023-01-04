@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import FAQPage from './pages/FAQPage/FAQPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Signup from './pages/Signup/Signup';
 
 function App() {
   //State to determine which page is currently active
@@ -16,12 +17,13 @@ function App() {
     <BrowserRouter>
     <div className='app'>
     {/* Conditionally render the header depending on where the location is (header isn't rendered on dashboard)  */}
-    {location === '/' || location === '/about' || location === '/contact' || location === '/faq'? <Header/>: ''}
+    {location === '/signup' || location === '/dashboard' || location === '/inspiration' || location === '/saved-music' || location === '/settings'? '': <Header/>}
       <Routes>
           <Route path='/' element={<LandingPage setLocation={setLocation}/>} />
           <Route path='/about' element={<AboutPage setLocation={setLocation}/>} />
           <Route path='/contact' element={<ContactPage setLocation={setLocation}/>} />
           <Route path='/faq' element={<FAQPage setLocation={setLocation}/>} />
+          <Route path='/signup' element={<Signup setLocation={setLocation}/>} />
           <Route path='/dashboard' element={<Dashboard setLocation={setLocation}/>}/>
           <Route path='/inspiration' element={<Dashboard setLocation={setLocation}/>}/>
           <Route path='/saved-music' element={<Dashboard setLocation={setLocation}/>}/>

@@ -1,0 +1,123 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.signup {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    &__form {
+        background-color: $primary-colour-background;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem 2rem;
+
+        @include tablet {
+            padding: 2rem 4rem;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__logoIcon {
+        width: 2rem;
+        margin-right: 0.5rem;
+
+        @include tablet {
+            width: 2.5rem;
+            margin-right: 0.75rem;
+        }
+    }
+
+    &__prompt {
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 1rem 0;
+
+        @include tablet {
+            font-size: 1.5rem;
+            margin: 2rem 0;
+        }
+    }
+
+    &__input {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+        }
+    }
+
+    &__label {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+
+        @include tablet {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
+
+    &__field {
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        width: 100%;
+
+        @include tablet {
+            width: 60%;
+        }
+
+        &:focus {
+            outline: 0.15rem $primary-colour-accent solid;
+        }
+    }
+
+    &__button {
+        border: none;
+        text-decoration: none;
+        color: $primary-colour-text;
+        background-color: $primary-colour-cta;
+        width: 10rem;
+        height: 2.5rem;
+        padding: 0.75rem 1.9rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            animation: buttonHover 0.25s ease-in-out;
+            background-color: $primary-colour-hover;
+            cursor: pointer;
+        }
+    }
+
+    &__text {
+        margin: 1rem 0 0 0;
+
+        @include tablet {
+            margin: 1.5rem 0 0 0;
+
+        }
+    }
+
+    &__login {
+        color: $primary-colour-accent;
+    }
+}

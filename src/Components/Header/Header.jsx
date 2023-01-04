@@ -30,10 +30,12 @@ function Header() {
                     </div>
                     <nav className='header__nav--tablet'>
                         <div className='header__navOptions'>
-                            <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink>
+                            {/* <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink> */}
+                            <NavLink to='/signup' className='header__dashboardLink'>Sign up</NavLink>
                             <NavLink to='/about' className='header__link'>About</NavLink>
                             <NavLink to='/contact' className='header__link'>Contact Us</NavLink>
                             <NavLink to='/faq' className='header__link header__link--last'>FAQ</NavLink>
+                            <NavLink to='/about' className='header__link header__link--login'>Login</NavLink>
                         </div>
                     </nav>
                 </div>
@@ -49,6 +51,7 @@ function Header() {
                         <NavLink to='/about' onClick={() => { setModalOpen(false) }} className='header__link header__link--top'>About</NavLink>
                         <NavLink to='/contact' onClick={() => { setModalOpen(false) }} className='header__link'>Contact Us</NavLink>
                         <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>FAQ</NavLink>
+                        <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>Login</NavLink>
                     </div>
                 </nav>
             </div> : ""}
