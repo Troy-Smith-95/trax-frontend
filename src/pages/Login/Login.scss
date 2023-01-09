@@ -1,7 +1,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-.signup {
+.login {
     width: 100vw;
     height: 100%;
     min-height: 100vh;
@@ -17,7 +17,7 @@
         align-items: center;
         flex-direction: column;
         padding: 1rem 2rem;
-        max-width: 34rem;
+        width: 34rem;
 
         @include tablet {
             padding: 2rem 4rem;
@@ -112,7 +112,6 @@
             width: 100%;
             color: red;
             text-align: center;
-
         }
     }
 

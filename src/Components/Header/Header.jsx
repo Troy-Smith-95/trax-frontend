@@ -42,7 +42,7 @@ function Header({ auth, setAuth }) {
                             <NavLink to='/about' className='header__link'>About</NavLink>
                             <NavLink to='/contact' className='header__link'>Contact Us</NavLink>
                             <NavLink to='/faq' className='header__link header__link--last'>FAQ</NavLink>
-                            { auth ? <p className='header__link header__link--login' onClick={handleLogout}>Sign out</p> : <NavLink to='/about' className='header__link header__link--login'>Login</NavLink>}
+                            { auth ? <p className='header__link header__link--signout' onClick={handleLogout}>Sign out</p> : <NavLink to='/login' className='header__link header__link--login'>Login</NavLink>}
                         </div>
                     </nav>
                 </div>

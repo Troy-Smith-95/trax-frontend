@@ -173,6 +173,12 @@
             margin: 0 0 0 1.5rem;
         }
 
+        &--signout {
+            margin: 0 0 0 1.5rem;
+            padding-top: 0.12rem;
+            cursor: pointer;
+        }
+
         &:hover {
             animation: navHover 0.25s ease-in-out;
             color: $primary-colour-text;

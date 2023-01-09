@@ -86,7 +86,7 @@ function Signup({ setLocation }) {
                     if (error.response.data.message === "Username already exists") {
                         setIsUniqueUsername(false);
                     }
-                    if (error.status === 500) {
+                    if (error.response.status === 500) {
                         setSuccess(false);
                     }
                 });
