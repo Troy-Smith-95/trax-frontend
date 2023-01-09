@@ -107,6 +107,16 @@
         }
     }
 
+    &__good {
+        margin: 0.5rem 0 0 0;
+        width: 100%;
+        color: $primary-colour-accent;
+
+        @include tablet {
+            width: 60%;
+        }
+    }
+
     &__button {
         border: none;
         text-decoration: none;

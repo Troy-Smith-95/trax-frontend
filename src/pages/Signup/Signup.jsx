@@ -4,7 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { isEmail, isEmpty, isStrongPassword } from "validator";
 import genreIcon from '../../assets/icons/genre_icon.svg';
+import axios from 'axios';
 
+const URL = process.env.REACT_APP_URL;
 
 function Signup({ setLocation }) {
     const [username, setUsername] = useState("");
@@ -12,6 +14,9 @@ function Signup({ setLocation }) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isValid, setIsValid] = useState(true);
+    const [isUniqueUser, setIsUniqueUser] = useState(true);
+    const [isUniqueUsername, setIsUniqueUsername] = useState(true);
+    const [success, setSuccess] = useState(true);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -20,6 +25,28 @@ function Signup({ setLocation }) {
         setLocation(location.pathname);
         // eslint-disable-next-line
     }, []);
+
+    //check is username is unique as the user types
+    useEffect(() => {
+        if (username.length !== 0) {
+            setTimeout(() => {
+                axios.post(URL + "/users/username", { username })
+                    .then((response) => {
+                        if (response.status === 200) {
+                            setIsUniqueUsername(true);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("error username");
+                        if (error.response.data.message === "Username already exists") {
+                            setIsUniqueUsername(false);
+                        }
+                    });
+                    console.log(isUniqueUsername);
+            }, 500)
+        }
+
+    }, [username]);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -36,8 +63,31 @@ function Signup({ setLocation }) {
             setIsValid(false);
 
             return;
-        }
+        } else {
+            const newUser = {};
+            newUser.username = username;
+            newUser.email = email;
+            newUser.password = password;
+            setIsValid(true);
 
+            axios.post(URL + "/users/register", newUser)
+                .then(() => {
+                    e.target.reset();
+                    navigate('/');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    if (error.response.data.message === "User already exists") {
+                        setIsUniqueUser(false);
+                    }
+                    if (error.response.data.message === "Username already exists") {
+                        setIsUniqueUsername(false);
+                    }
+                    if (error.status === 500) {
+                        setSuccess(false);
+                    }
+                });
+        }
     }
 
     return (
@@ -55,6 +105,18 @@ function Signup({ setLocation }) {
                         <>
                             <div className='signup__offset'></div>
                             <p className='signup__error'>This field is required!</p>
+                        </>
+                        : ""}
+                    {!isUniqueUsername ?
+                        <>
+                            <div className='signup__offset'></div>
+                            <p className='signup__error'>Username already exists!</p>
+                        </>
+                        : ""}
+                    {isUniqueUsername && !isEmpty(username) ?
+                        <>
+                            <div className='signup__offset'></div>
+                            <p className='signup__good'>Valid username!</p>
                         </>
                         : ""}
                 </div>
