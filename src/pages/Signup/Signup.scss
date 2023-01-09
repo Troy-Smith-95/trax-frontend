@@ -105,6 +105,12 @@
         @include tablet {
             width: 60%;
         }
+
+        &--center {
+            margin: 1rem 0 0 0;
+            width: 100%;
+            color: red;
+        }
     }
 
     &__good {

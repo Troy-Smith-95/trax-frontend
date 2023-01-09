@@ -42,7 +42,6 @@ function Signup({ setLocation }) {
                             setIsUniqueUsername(false);
                         }
                     });
-                    console.log(isUniqueUsername);
             }, 500)
         }
 
@@ -50,6 +49,8 @@ function Signup({ setLocation }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        setIsUniqueUser(true);
+        setSuccess(true);
 
         if (
             isEmpty(username) ||
@@ -58,6 +59,7 @@ function Signup({ setLocation }) {
             isEmpty(confirmPassword) ||
             !isEmail(email) ||
             !isStrongPassword(password) ||
+            !isUniqueUsername ||
             password !== confirmPassword
         ) {
             setIsValid(false);
@@ -71,8 +73,9 @@ function Signup({ setLocation }) {
             setIsValid(true);
 
             axios.post(URL + "/users/register", newUser)
-                .then(() => {
+                .then((res) => {
                     e.target.reset();
+                    sessionStorage.setItem("authToken", res.data.token);
                     navigate('/');
                 })
                 .catch((error) => {
@@ -122,11 +125,17 @@ function Signup({ setLocation }) {
                 </div>
                 <div className='signup__input'>
                     <label className='signup__label' htmlFor="email">Email:</label>
-                    <input className='signup__field' type="email" name='email' placeholder='Email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                    <input className='signup__field' type="text" name='email' placeholder='Email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
                     {!isValid && !isEmail(email) ?
                         <>
                             <div className='signup__offset'></div>
                             <p className='signup__error'>A valid email is required!</p>
+                        </>
+                        : ""}
+                    {!isUniqueUser ?
+                        <>
+                            <div className='signup__offset'></div>
+                            <p className='signup__error'>User already exists!</p>
                         </>
                         : ""}
                 </div>
@@ -151,11 +160,14 @@ function Signup({ setLocation }) {
                         : ""}
                 </div>
                 <button className='signup__button'>Sign Up</button>
-
+                {!success ?
+                        <>
+                            <p className='signup__error--center'>Unable to create new user!</p>
+                        </>
+                        : ""}
                 <p className='signup__text'>
                     Have an account? <Link className='signup__login' to="/login">Log in</Link>
                 </p>
-
             </form>
         </main>
     );

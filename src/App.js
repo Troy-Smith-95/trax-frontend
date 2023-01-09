@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import LandingPage from './pages/LandingPage/LandingPage';
 import Header from './Components/Header/Header';
@@ -12,12 +12,26 @@ import Signup from './pages/Signup/Signup';
 function App() {
   //State to determine which page is currently active
   const [location, setLocation] = useState();
+  const [user, setUser] = useState(null);
+  const [auth, setAuth] = useState(true);
+
+  const authToken = sessionStorage.getItem('authToken');
+
+  // if there is no auth token in session storage auth is failed
+  useEffect(() => {
+    if (!authToken) {
+      setAuth(false);
+    } else {
+      setAuth(true);
+    }
+  }, [authToken]);
+  
   
   return (
     <BrowserRouter>
     <div className='app'>
     {/* Conditionally render the header depending on where the location is (header isn't rendered on dashboard)  */}
-    {location === '/signup' || location === '/dashboard' || location === '/inspiration' || location === '/saved-music' || location === '/settings'? '': <Header/>}
+    {location === '/signup' || location === '/dashboard' || location === '/inspiration' || location === '/saved-music' || location === '/settings'? '': <Header auth={auth} setAuth={setAuth} />}
       <Routes>
           <Route path='/' element={<LandingPage setLocation={setLocation}/>} />
           <Route path='/about' element={<AboutPage setLocation={setLocation}/>} />

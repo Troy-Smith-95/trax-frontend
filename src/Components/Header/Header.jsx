@@ -5,7 +5,7 @@ import exitIcon from '../../assets/icons/exit.svg';
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Header() {
+function Header({ auth, setAuth }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalClosing, setModalClosing] = useState(false);
     const navigate = useNavigate();
@@ -17,6 +17,14 @@ function Header() {
             setModalClosing(false);
         }, 400)
     }, [modalClosing]);
+
+    const handleLogout = () => {
+        // failedAuth = true
+        setAuth(false);
+    
+        // remove token from session storage
+        sessionStorage.removeItem('authToken');
+      }
     
 
     return (
@@ -30,12 +38,11 @@ function Header() {
                     </div>
                     <nav className='header__nav--tablet'>
                         <div className='header__navOptions'>
-                            {/* <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink> */}
-                            <NavLink to='/signup' className='header__dashboardLink'>Sign up</NavLink>
+                            { auth ? <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' className='header__dashboardLink'>Sign up</NavLink> }
                             <NavLink to='/about' className='header__link'>About</NavLink>
                             <NavLink to='/contact' className='header__link'>Contact Us</NavLink>
                             <NavLink to='/faq' className='header__link header__link--last'>FAQ</NavLink>
-                            <NavLink to='/about' className='header__link header__link--login'>Login</NavLink>
+                            { auth ? <p className='header__link header__link--login' onClick={handleLogout}>Sign out</p> : <NavLink to='/about' className='header__link header__link--login'>Login</NavLink>}
                         </div>
                     </nav>
                 </div>
