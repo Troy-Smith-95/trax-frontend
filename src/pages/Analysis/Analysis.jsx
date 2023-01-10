@@ -19,7 +19,6 @@ function Analysis({ explained, setExplained, setExplainedStep1 }) {
     //Calls to retrieve data to populate dashboard
     useEffect(() => {
         axios.get(URL + '/genres').then((response) => {
-            console.log(response.data);
             setGenres(response.data);
         }).catch((error) => {
             console.log(`Error retrieving genres: ${error}`);
@@ -29,9 +28,7 @@ function Analysis({ explained, setExplained, setExplainedStep1 }) {
             const genre = genres.filter((genre) => {
                 return genre.genre_name === selectedGenre;
             })
-            console.log(genre);
             axios.get(`${URL}/genres/${genre[0].id}/audio-features`).then((response) => {
-                console.log(response);
                 createTrends(response.data);
                 determineKey(response.data[0].key);
                 setAudioFeatures(response.data);

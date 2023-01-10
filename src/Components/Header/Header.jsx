@@ -19,7 +19,6 @@ function Header({ auth, setAuth }) {
     }, [modalClosing]);
 
     const handleLogout = () => {
-        // failedAuth = true
         setAuth(false);
     
         // remove token from session storage
@@ -54,11 +53,11 @@ function Header({ auth, setAuth }) {
                 </div>
                 <nav className='header__nav'>
                     <div className={`${modalClosing ? "header__navOptions header__navOptions--closing" : "header__navOptions"}`}>
-                        <NavLink to='/dashboard' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Dashboard</NavLink>
+                        { auth ? <NavLink to='/dashboard' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Sign Up</NavLink>}
                         <NavLink to='/about' onClick={() => { setModalOpen(false) }} className='header__link header__link--top'>About</NavLink>
                         <NavLink to='/contact' onClick={() => { setModalOpen(false) }} className='header__link'>Contact Us</NavLink>
                         <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>FAQ</NavLink>
-                        <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>Login</NavLink>
+                        <NavLink to='/login' onClick={() => { setModalOpen(false) }} className='header__link'>Login</NavLink>
                     </div>
                 </nav>
             </div> : ""}

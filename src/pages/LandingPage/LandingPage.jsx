@@ -6,7 +6,7 @@ import StartNow from '../../Components/StartNow/StartNow';
 import WeeklyStats from '../../Components/WeeklyStats/WeeklyStats';
 import './LandingPage.scss';
 
-function LandingPage({setLocation}) {
+function LandingPage({setLocation, auth}) {
     const location = useLocation();
 
     useEffect(() => {
@@ -17,10 +17,10 @@ function LandingPage({setLocation}) {
     return (
         <>
         <div className='landingPage'>
-            <Hero/>
+            <Hero auth={auth}/>
             <WeeklyStats/>
             <Features/>
-            <StartNow/>
+            <StartNow auth={auth}/>
         </div>
         </>
     );

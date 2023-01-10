@@ -8,7 +8,7 @@ import upArrow from '../../assets/icons/up_arrow.svg';
 import infoIcon from '../../assets/icons/info_icon.svg';
 import './Dashboard.scss';
 
-function Dashboard({ setLocation }) {
+function Dashboard({ setLocation, user, setAuth }) {
     const location = useLocation();
     //States to control the how to us tutorial
     const [explained, setExplained] = useState(false);
@@ -22,7 +22,7 @@ function Dashboard({ setLocation }) {
     return (
         <>
             <div className='dashboard'>
-                <DashboardNav/>
+                <DashboardNav user={user} setAuth={setAuth}/>
                 <div className='dashboard__page'>
                     <div className='dashboard__content'>
                         {/* Navigation within the dashboard */}

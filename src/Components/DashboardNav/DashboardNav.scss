@@ -49,6 +49,7 @@
 
         @include tablet {
             display: block;
+            position: relative;
         }
 
     }
@@ -172,4 +173,28 @@
         font-weight: 500;
     }
 
+    &__status {
+        position: absolute;
+        bottom: 1rem;
+        width: 15rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        animation: statusAppear 1s ease;
+
+        &--closing {
+            display: none;
+        }
+    }
+
+    &__user {
+       opacity: 0.5;
+
+        &--signout {
+            color: $primary-colour-accent;
+            opacity: 0.8;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
 }

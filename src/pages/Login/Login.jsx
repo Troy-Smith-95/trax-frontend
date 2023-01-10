@@ -46,7 +46,7 @@ function Signup({ setLocation }) {
                 .then((res) => {
                     e.target.reset();
                     sessionStorage.setItem("authToken", res.data.token);
-                    navigate('/');
+                    navigate('/dashboard');
                 })
                 .catch((error) => {
                     console.log(error);

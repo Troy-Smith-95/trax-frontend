@@ -1,2 +1,6 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+
+.landingPage {
+    animation: statusAppear 0.5s ease-in-out;
+}

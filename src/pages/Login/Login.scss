@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    animation: statusAppear 0.25s ease-in-out;
 
     &__form {
         background-color: $primary-colour-background;
@@ -17,10 +18,11 @@
         align-items: center;
         flex-direction: column;
         padding: 1rem 2rem;
-        width: 34rem;
+        width: 25rem;
 
         @include tablet {
             padding: 2rem 4rem;
+            width: 34rem;
         }
     }
 

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import mobileNavIcon from '../../assets/icons/mobile_nav_icon.svg';
 import genreIcon from '../../assets/icons/genre_icon.svg';
 import cancelIcon from '../../assets/icons/exit.svg';
@@ -10,9 +10,11 @@ import exitIcon from '../../assets/icons/exit_icon.svg';
 import './DashboardNav.scss';
 import { useEffect, useState } from 'react';
 
-function DashboardNav() {
+function DashboardNav({ user, setAuth }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalClosing, setModalClosing] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -20,6 +22,20 @@ function DashboardNav() {
             setModalClosing(false);
         }, 400)
     }, [modalClosing]);
+
+    const handleLogout = () => {
+        setAuth(false);
+
+        // remove token from session storage
+        sessionStorage.removeItem('authToken');
+
+        //navigate to home page
+        navigate('/');
+    }
+
+    if (!user) {
+        return
+    }
 
     return (
         <>
@@ -56,6 +72,10 @@ function DashboardNav() {
                                     </NavLink>
                                 </div>
                             </nav>
+                            <div className='dashboardNav__status'>
+                                <p className='dashboardNav__user'>{`Logged in as ${user.username}`}</p>
+                                <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,6 +112,10 @@ function DashboardNav() {
                         </NavLink>
                     </div>
                 </nav>
+                <div className={`${modalClosing ? "dashboardNav__status dashboardNav__status--closing" : "dashboardNav__status"}`}>
+                    <p className='dashboardNav__user'>{`Logged in as ${user.username}`}</p>
+                    <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p>
+                </div>
             </div> : ""}
         </>
     );
