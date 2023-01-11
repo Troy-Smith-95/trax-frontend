@@ -47,7 +47,7 @@
         appearance: none;
         z-index: 1;
 
-        &:focus{
+        &:focus {
             outline: none;
         }
     }
@@ -70,7 +70,7 @@
     }
 
     &__container {
-        width: 100%; 
+        width: 100%;
     }
 
     &__queries {
@@ -84,41 +84,124 @@
         background-color: #1E1C59;
         position: relative;
 
-        @include desktop {
-            height: 14rem;
+    }
+
+    &__otherQueries {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+
+        @include tablet {
+            flex-direction: row;
         }
     }
 
-    &__infoIcon {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        cursor: pointer;
+    &__sliders {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 2rem;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            flex-direction: row;
+        }
     }
 
-    &__data {
+    &__query {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+        width: 20%;
+        min-width: 15.625rem;
+        // margin: 0 0 2rem 0;
+
+        @include tablet {
+            // margin: 0 2rem 2rem 0;
+        }
+    }
+
+    &__otherQuery {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 50%;
-        min-width: 8.75rem;
-        margin-bottom: 2rem;
+        justify-content: space-between;
+        margin: 0 0 1rem 0;
+        width: 15.625rem;
+    }
 
-        @include desktop {
-            width: 33%;
+    &__parameter {
+        font-size: 1rem;
+        margin-top: 0;
+    }
+
+    &__number {
+        height: 1.75rem;
+        background-color: $primary-colour-background;
+        border: none;
+        color: $primary-colour-text;
+        border-radius: 0.75rem;
+        padding: 0.5rem 0.5rem;
+        width: 5.5rem;
+        border: none;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1rem;
+
+        &:focus {
+            outline: 0.15rem $primary-colour-accent solid;
         }
     }
 
-    &__feature {
-        margin: 0 0 1.25rem 0;
+    &__range {
+        width: 100%;
+    }
+
+
+    &__value {
+        margin: 0.25rem 0.15rem 0 0.15rem;
         font-size: 1rem;
     }
 
-    &__value {
+    &__label {
         color: $secondary-colour-text;
-        font-size: 1.875rem;
+        font-size: 1.25rem;
         font-weight: 700;
-        margin: 0;
+        margin: 0 0.5rem 0 0.25rem;
+    }
+
+    &__button {
+        border: none;
+        text-decoration: none;
+        color: $primary-colour-text;
+        background-color: $primary-colour-cta;
+        width: 15rem;
+        height: 2.5rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 0.75rem 1.9rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 0.5rem 0;
+
+        @include tablet {
+            width: 17rem;
+            font-size: 1rem;
+        }
+
+        &:hover {
+            animation: buttonHover 0.25s ease-in-out;
+            background-color: $primary-colour-hover;
+            cursor: pointer;
+        }
     }
 
     &__trends {
@@ -140,50 +223,53 @@
         margin: 0 0 1rem 0;
         text-align: center;
     }
+}
 
-    &__chart {
-        max-width: 100%;
+//Styles for range input
 
-    }
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
 
-    &__otherTrends {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        border-radius: 1rem;
-        padding: 2rem 1rem 1rem 1rem;
-        position: relative;
-    }
+/***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #1db95466;
+    height: 0.5rem;
+    border-radius: 0.2rem;
+}
 
-    &__infoOverlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 0.5rem 1rem;
-        background-color: $primary-colour-cta;
-        border-radius: 1rem;
-        overflow: auto;
-    }
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    margin-top: -6px;
+    /* Centers thumb on the track */
+    background-color: $primary-colour-accent;
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 0.6rem;
+}
 
-    &__exit {
-        width: 1rem;
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        cursor: pointer;
-    }
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    background: #1db95466;
+    height: 0.5rem;
+    border-radius: 0.2rem;
+}
 
-    &__infoText {
-        margin: 0.5rem 1.25rem 0 0;
-        font-size: 0.75rem;
-        line-height: 1rem;
-
-        &--bold {
-            font-weight: 700;
-        }
-    }
-
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    /*Removes default border-radius that FF applies*/
+    background-color: $primary-colour-accent;
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 0.6rem;
 }
