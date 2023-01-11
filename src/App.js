@@ -11,7 +11,6 @@ import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import axios from 'axios';
 
-
 const URL = process.env.REACT_APP_URL;
 
 function App() {
@@ -26,6 +25,21 @@ function App() {
   useEffect(() => {
     if (!authToken) {
       setAuth(false);
+      axios.get(URL + '/auth/profile', { withCredentials: true })
+      .then((res) => {
+        setAuth(true);
+        setUser(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        // If we are getting back 401 (Unauthorized) back from the server, means we need to log in
+        if (err.response.status === 401) {
+          // Update the state: done authenticating, user is not logged in
+          setAuth(false);
+        } else {
+          console.log('Error authenticating', err);
+        }
+      });
     } else {
       axios
       .get( URL + '/users/profile', {

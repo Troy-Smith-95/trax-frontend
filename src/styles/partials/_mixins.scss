@@ -94,6 +94,16 @@
     }
 }
 
+@keyframes buttonHoverAlt {
+    from {
+        background-color: white;
+    }
+
+    to {
+        background-color: rgb(200, 231, 194);
+    }
+}
+
 @keyframes modalClose {
     from {
         width: 18rem;

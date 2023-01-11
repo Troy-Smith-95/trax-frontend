@@ -181,6 +181,7 @@
         justify-content: center;
         gap: 0.5rem;
         animation: statusAppear 1s ease;
+        margin-bottom: 1rem;
 
         &--closing {
             display: none;
@@ -188,13 +189,23 @@
     }
 
     &__user {
-       opacity: 0.5;
+        opacity: 0.5;
+        margin: 0;
 
         &--signout {
             color: $primary-colour-accent;
             opacity: 0.8;
             text-decoration: underline;
             cursor: pointer;
+            margin: 0;
+        }
+
+        &--signoutLink {
+            color: $primary-colour-accent;
+            opacity: 0.8;
+            text-decoration: underline;
+            cursor: pointer;
+            padding-top: 0.12rem;
         }
     }
 }

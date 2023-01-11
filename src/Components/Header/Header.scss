@@ -149,8 +149,10 @@
         text-decoration: none;
         color: $secondary-colour-text;
         margin-bottom: 1rem;
+        margin-top: 0;
         width: fit-content;
         white-space: nowrap;
+        cursor: pointer;
 
         @include tablet {
             height: 1.5rem;
@@ -176,6 +178,12 @@
         &--signout {
             margin: 0 0 0 1.5rem;
             padding-top: 0.1rem;
+            cursor: pointer;
+        }
+
+        &--signoutLink {
+            margin: 0 0 0 1.5rem;
+            padding-top: 0.23rem;
             cursor: pointer;
         }
 

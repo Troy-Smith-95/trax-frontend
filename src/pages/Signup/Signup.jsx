@@ -160,6 +160,8 @@ function Signup({ setLocation }) {
                         : ""}
                 </div>
                 <button className='signup__button'>Sign Up</button>
+                <p>OR</p>
+                <a className='signup__spotify' href={`${URL}/auth/spotify`}>Continue with Spotify</a>
                 {!success ?
                         <>
                             <p className='signup__error--center'>Unable to create new user!</p>

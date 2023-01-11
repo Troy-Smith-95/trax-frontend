@@ -5,11 +5,13 @@ import exitIcon from '../../assets/icons/exit.svg';
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
+const URL = process.env.REACT_APP_URL;
+
 function Header({ auth, setAuth }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalClosing, setModalClosing] = useState(false);
     const navigate = useNavigate();
-    
+
     //Delays the closing of the modal menu on mobile so the animation can play out
     useEffect(() => {
         setTimeout(() => {
@@ -20,28 +22,30 @@ function Header({ auth, setAuth }) {
 
     const handleLogout = () => {
         setAuth(false);
-    
+        setModalOpen(false)
         // remove token from session storage
         sessionStorage.removeItem('authToken');
-      }
-    
+    }
+
 
     return (
         <>
             <header className='header'>
                 <div className='header__container'>
                     <img onClick={() => { setModalOpen(true) }} className={`header__navIcon ${modalOpen ? "header__navIcon--none" : ""}`} src={mobileNavIcon} alt="Nav Icon" />
-                    <div onClick={() => { navigate('/')}} className='header__logo'>
+                    <div onClick={() => { navigate('/') }} className='header__logo'>
                         <img className='header__logoIcon' src={genreIcon} alt="Vinyl Record Icon" />
                         <h1 className='header__name'>Trax</h1>
                     </div>
                     <nav className='header__nav--tablet'>
                         <div className='header__navOptions'>
-                            { auth ? <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' className='header__dashboardLink'>Sign up</NavLink> }
+                            {auth ? <NavLink to='/dashboard' className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' className='header__dashboardLink'>Sign up</NavLink>}
                             <NavLink to='/about' className='header__link'>About</NavLink>
                             <NavLink to='/contact' className='header__link'>Contact Us</NavLink>
                             <NavLink to='/faq' className='header__link header__link--last'>FAQ</NavLink>
-                            { auth ? <p className='header__link header__link--signout' onClick={handleLogout}>Sign out</p> : <NavLink to='/login' className='header__link header__link--login'>Login</NavLink>}
+                            {auth ?
+                                sessionStorage.getItem('authToken') ? <p className='header__link header__link--signout' onClick={handleLogout}>Sign out</p> : <a className='header__link header__link--signoutLink' href={URL + '/auth/logout'}>Sign out</a>
+                                : <NavLink to='/login' className='header__link header__link--login'>Login</NavLink>}
                         </div>
                     </nav>
                 </div>
@@ -53,11 +57,14 @@ function Header({ auth, setAuth }) {
                 </div>
                 <nav className='header__nav'>
                     <div className={`${modalClosing ? "header__navOptions header__navOptions--closing" : "header__navOptions"}`}>
-                        { auth ? <NavLink to='/dashboard' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Sign Up</NavLink>}
+                        {auth ? <NavLink to='/dashboard' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Dashboard</NavLink> : <NavLink to='/signup' onClick={() => { setModalOpen(false) }} className='header__dashboardLink'>Sign Up</NavLink>}
                         <NavLink to='/about' onClick={() => { setModalOpen(false) }} className='header__link header__link--top'>About</NavLink>
                         <NavLink to='/contact' onClick={() => { setModalOpen(false) }} className='header__link'>Contact Us</NavLink>
                         <NavLink to='/faq' onClick={() => { setModalOpen(false) }} className='header__link'>FAQ</NavLink>
-                        <NavLink to='/login' onClick={() => { setModalOpen(false) }} className='header__link'>Login</NavLink>
+                        {auth ?
+                            sessionStorage.getItem('authToken') ? <p className='header__link' onClick={handleLogout}>Sign out</p> : <a className='header__link' href={URL + '/auth/logout'}>Sign out</a>
+                            : <NavLink to='/login' onClick={() => { setModalOpen(false) }} className='header__link'>Login</NavLink>}
+
                     </div>
                 </nav>
             </div> : ""}

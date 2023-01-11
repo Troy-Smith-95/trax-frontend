@@ -122,6 +122,7 @@
         margin: 0.5rem 0 0 0;
         width: 100%;
         color: $primary-colour-accent;
+        text-align: center;
 
         @include tablet {
             width: 60%;
@@ -133,15 +134,52 @@
         text-decoration: none;
         color: $primary-colour-text;
         background-color: $primary-colour-cta;
-        width: 10rem;
+        width: 15rem;
         height: 2.5rem;
+        font-size: 0.85rem;
+        font-weight: 700;
         padding: 0.75rem 1.9rem;
         border-radius: 1.5rem;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 0.5rem 0;
+
+        @include tablet {
+            width: 17rem;
+            font-size: 1rem;
+        }
 
         &:hover {
             animation: buttonHover 0.25s ease-in-out;
             background-color: $primary-colour-hover;
+            cursor: pointer;
+        }
+    }
+
+    &__spotify {
+        color: black;
+        font-weight: 700;
+        font-size: 0.85rem;
+        width: 15rem;
+        text-align: center;
+        text-decoration: none;
+        background-color: white;
+        padding: 0.75rem 1.9rem 0.75rem 2.7rem;
+        border-radius: 1.5rem;
+        background-image: url('../../assets/icons/Spotify_Icon_RGB_Green.png');
+        background-size: 1.75rem;
+        background-repeat: no-repeat;
+        background-position: top 0.4rem left 0.8rem;
+        margin: 0.5rem 0;
+
+        @include tablet {
+            font-size: 1rem;
+            width: 17rem;
+            background-size: 2rem;
+        }
+
+        &:hover {
+            animation: buttonHoverAlt 0.25s ease-in-out;
+            background-color: rgb(200, 231, 194);
             cursor: pointer;
         }
     }

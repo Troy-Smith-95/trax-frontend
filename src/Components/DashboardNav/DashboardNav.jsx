@@ -10,6 +10,8 @@ import exitIcon from '../../assets/icons/exit_icon.svg';
 import './DashboardNav.scss';
 import { useEffect, useState } from 'react';
 
+const URL = process.env.REACT_APP_URL;
+
 function DashboardNav({ user, setAuth }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalClosing, setModalClosing] = useState(false);
@@ -25,10 +27,8 @@ function DashboardNav({ user, setAuth }) {
 
     const handleLogout = () => {
         setAuth(false);
-
         // remove token from session storage
         sessionStorage.removeItem('authToken');
-
         //navigate to home page
         navigate('/');
     }
@@ -73,8 +73,8 @@ function DashboardNav({ user, setAuth }) {
                                 </div>
                             </nav>
                             <div className='dashboardNav__status'>
-                                <p className='dashboardNav__user'>{`Logged in as ${user.username}`}</p>
-                                <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p>
+                                <p className='dashboardNav__user'>{`Logged in as ${user.username ? user.username : user.display_name}`}</p>
+                                {sessionStorage.getItem('authToken') ? <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p> : <a className='dashboardNav__user--signoutLink' href={URL + '/auth/logout'}>Sign out?</a>}
                             </div>
                         </div>
                     </div>
@@ -113,8 +113,8 @@ function DashboardNav({ user, setAuth }) {
                     </div>
                 </nav>
                 <div className={`${modalClosing ? "dashboardNav__status dashboardNav__status--closing" : "dashboardNav__status"}`}>
-                    <p className='dashboardNav__user'>{`Logged in as ${user.username}`}</p>
-                    <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p>
+                    <p className='dashboardNav__user'>{`Logged in as ${user.username ? user.username : user.display_name}`}</p>
+                    {sessionStorage.getItem('authToken') ? <p className='dashboardNav__user--signout' onClick={handleLogout}>Sign out?</p> : <a className='dashboardNav__user--signoutLink' href={URL + '/auth/logout'}>Sign out?</a>}
                 </div>
             </div> : ""}
         </>

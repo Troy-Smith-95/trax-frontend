@@ -67,6 +67,16 @@ function Signup({ setLocation }) {
                     <h1>Trax</h1>
                 </div>
                 <h2 className='login__prompt'>Log in to continue.</h2>
+                {!validCredentials ?
+                    <>
+                        <p className='login__error--center'>Incorrect email and/or password</p>
+                    </>
+                    : ""}
+                {!success ?
+                    <>
+                        <p className='login__error--center'>Unable to log in user</p>
+                    </>
+                    : ""}
                 <div className='login__input'>
                     <label className='login__label' htmlFor="email">Email:</label>
                     <input className='login__field' type="text" name='email' placeholder='Email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
@@ -88,16 +98,9 @@ function Signup({ setLocation }) {
                         : ""}
                 </div>
                 <button className='login__button'>Log in</button>
-                {!validCredentials ?
-                    <>
-                        <p className='login__error--center'>Incorrect email and/or password</p>
-                    </>
-                    : ""}
-                {!success ?
-                    <>
-                        <p className='login__error--center'>Unable to log in user</p>
-                    </>
-                    : ""}
+                <p>OR</p>
+                <a className='login__spotify' href={`${URL}/auth/spotify`}>Continue with Spotify</a>
+              
                 <p className='login__text'>
                     Don't have an account? <Link className='login__login' to="/signup">Sign up</Link>
                 </p>
