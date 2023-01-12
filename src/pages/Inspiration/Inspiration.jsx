@@ -1,12 +1,14 @@
 import './Inspiration.scss';
 import { useEffect, useState } from 'react';
 import { isEmpty } from "validator";
+import Lottie from "lottie-react";
+import musicDog from '../../assets/lotties/88994-music-time.json';
 import axios from 'axios';
 import InspirationTrack from '../../Components/InspirationTrack/InspirationTrack';
 
 const URL = process.env.REACT_APP_URL;
 
-function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
+function Inspiration({ explainedIns, setExplainedIns, setExplainedStep1Ins, user }) {
     const [genres, setGenres] = useState(null);
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [audioFeatures, setAudioFeatures] = useState(null);
@@ -26,6 +28,7 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
     const [playlistName, setPlaylistName] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [success, setSuccess] = useState(false);
+    const [playlistGenerated, setPlaylistGenerated] = useState(false);
 
     //Calls to retrieve data to populate dashboard
     useEffect(() => {
@@ -57,6 +60,11 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
         // eslint-disable-next-line
     }, [selectedGenre]);
 
+    //For lottie files
+    const style = {
+        height: 200,
+    };
+
     function handleSubmit(e) {
         e.preventDefault();
         setSuccess(false);
@@ -78,6 +86,7 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
         axios.post(URL + '/inspiration/generate', { params })
             .then((res) => {
                 setPlaylist(res.data);
+                setPlaylistGenerated(true);
             }).catch((error) => {
                 console.log(`Error in generating playlist: ${error}`);
             });
@@ -106,6 +115,7 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
         }
     }
 
+
     if (!genres) {
         return (
             <></>
@@ -115,13 +125,13 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
     return (
         <section className='inspiration'>
             <div className='inspiration__header'>
-                <select className='inspiration__selector' onChange={(e) => { setSelectedGenre(e.target.value); setExplainedStep1(true) }} name="genre" id="genre">
+                <select className='inspiration__selector' onChange={(e) => { setSelectedGenre(e.target.value); setExplainedStep1Ins(true) }} name="genre" id="genre">
                     {!audioFeatures ? <option value="">Select Genre</option> : ''}
                     {genres.map((genre) => {
                         return <option key={genre.id} value={genre.genre_name}>{genre.genre_name}</option>
                     })}
                 </select>
-                <p className='inspiration__explained' onClick={() => { setExplained(!explained); setExplainedStep1(false) }}>{!explained ? "How to Use" : "Go Back"}</p>
+                <p className='inspiration__explained' onClick={() => { setExplainedIns(!explainedIns); setExplainedStep1Ins(false) }}>{!explainedIns ? "How to Use" : "Go Back"}</p>
             </div>
             <div className='inspiration__insights'>
                 <div className='inspiration__container'>
@@ -210,12 +220,19 @@ function Inspiration({ explained, setExplained, setExplainedStep1, user }) {
                     </form>
                     <div className='inspiration__playlist'>
                         <form className='inspiration__toSpotify' onSubmit={handleSave}>
-                            <div>
-                                <input className='inspiration__playlistName' type="text" name='playlist_name' placeholder='Playlist Name' value={playlistName} onChange={(e) => { setPlaylistName(e.target.value) }} />
-                                {!isValid && isEmpty(playlistName) ? <p className='inspiration__error'>Required to save to Spotify</p> : ""}
-                                {success ? <p className='inspiration__good'>Playlist saved to Spotify!</p> : ""}
-                            </div>
-                            <button className='inspiration__save'>Save to Spotify</button>
+                            {!playlistGenerated ?
+                                <>
+                                    <h2 className='inspiration__info'>Playlists Go Here</h2>
+                                    <Lottie style={style} animationData={musicDog} />
+                                </> :                                
+                                <>
+                                    <div>
+                                        <input className='inspiration__playlistName' type="text" name='playlist_name' placeholder='Playlist Name' value={playlistName} onChange={(e) => { setPlaylistName(e.target.value) }} />
+                                        {!isValid && isEmpty(playlistName) ? <p className='inspiration__error'>Required to save to Spotify</p> : ""}
+                                        {success ? <p className='inspiration__good'>Playlist saved to Spotify!</p> : ""}
+                                    </div>
+                                    <button className='inspiration__save'>Save to Spotify</button>
+                                </>}
                         </form>
                         <div className='inspiration__tracks'>
                             {playlist === null ? "" :
