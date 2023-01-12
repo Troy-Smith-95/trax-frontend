@@ -27,7 +27,7 @@ function Dashboard({ setLocation, user, setAuth }) {
                     <div className='dashboard__content'>
                         {/* Navigation within the dashboard */}
                         {location.pathname === '/dashboard' ? <Analysis explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} /> : ''}
-                        {location.pathname === '/inspiration' ? <Inspiration  explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} /> : ''}
+                        {location.pathname === '/inspiration' ? <Inspiration  explained={explained} setExplained={setExplained} explainedStep1={explainedStep1} setExplainedStep1={setExplainedStep1} user={user} /> : ''}
                         {/* Overlay to explain how to use dashboard */}
                         {explained ? <div className='dashboard__explained' onClick={() => {setExplained(false)}}>
                             {!explainedStep1 ?

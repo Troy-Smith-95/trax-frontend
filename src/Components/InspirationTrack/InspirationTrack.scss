@@ -1,0 +1,51 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.inspirationTrack {
+    background-color: $primary-colour-background;
+    width: 18.25rem;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+
+    &__imgContainer {
+        width: 5rem;
+        height: 5rem;
+        overflow: hidden;
+        border-radius: 0.25rem;
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 9.6875rem;
+    }
+
+    &__name {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1rem;
+        // limits song title to 2 lines and will add ... if there is text that will spill into a third line
+        overflow: hidden;
+        display: -webkit-box; //not supported in IE
+        -webkit-line-clamp: 2; //not supported in IE
+        -webkit-box-orient: vertical; //not supported in IE
+    }
+
+    &__artist {
+        margin: 0;
+        // limits artist name to 1 line and will add ... if there is text that will spill into a second
+        overflow: hidden;
+        display: -webkit-box; //not supported in IE
+        -webkit-line-clamp: 1; //not supported in IE
+        -webkit-box-orient: vertical; //not supported in IE
+    }
+
+
+}
