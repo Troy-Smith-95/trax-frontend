@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import musicDog from '../../assets/lotties/88994-music-time.json';
 import axios from 'axios';
 import InspirationTrack from '../../Components/InspirationTrack/InspirationTrack';
+import InspirationSlider from '../../Components/InspirationSlider/InspirationSlider';
 
 const URL = process.env.REACT_APP_URL;
 
@@ -70,16 +71,16 @@ function Inspiration({ explainedIns, setExplainedIns, setExplainedStep1Ins, user
         e.preventDefault();
         setSuccess(false);
         const params = {};
-        params.target_acousticness = e.target.acousticness.value;
-        params.target_danceability = e.target.danceability.value;
-        params.target_duration_ms = (e.target.duration_m.value * 60 * 1000) + (e.target.duration_s.value * 1000);
-        params.target_energy = e.target.energy.value;
-        params.target_instrumentalness = e.target.instrumentalness.value;
-        params.target_liveness = e.target.liveness.value;
-        params.target_popularity = e.target.popularity.value;
-        params.target_speechiness = e.target.speechiness.value;
-        params.target_tempo = e.target.tempo.value;
-        params.target_valence = e.target.valence.value;
+        params.target_acousticness = audioFeatures.acousticness;
+        params.target_danceability = audioFeatures.danceability;
+        params.target_duration_ms = (audioFeatures.duration_m * 60 * 1000) + (audioFeatures.duration_s * 1000);
+        params.target_energy = audioFeatures.energy;
+        params.target_instrumentalness = audioFeatures.instrumentalness;
+        params.target_liveness = audioFeatures.liveness;
+        params.target_popularity = audioFeatures.popularity;
+        params.target_speechiness = audioFeatures.speechiness;
+        params.target_tempo = audioFeatures.tempo;
+        params.target_valence = audioFeatures.valence;
         params.limit = e.target.limit.value;
         params.seed_genres = selectedGenre.toLowerCase();
         params.spotify_id = user.spotify_id;
@@ -138,55 +139,13 @@ function Inspiration({ explainedIns, setExplainedIns, setExplainedStep1Ins, user
                 <div className='inspiration__container'>
                     <form className='inspiration__queries' onSubmit={handleSubmit}>
                         <div className='inspiration__sliders'>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Acousticness</h3>
-                                <input className='inspiration__number' type="number" name='acousticness' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.acousticness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, acousticness: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.acousticness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, acousticness: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Danceability</h3>
-                                <input className='inspiration__number' type="number" name='danceability' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.danceability} onChange={(e) => { setAudioFeatures({ ...audioFeatures, danceability: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.danceability} onChange={(e) => { setAudioFeatures({ ...audioFeatures, danceability: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Valence</h3>
-                                <input className='inspiration__number' type="number" name='valence' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.valence} onChange={(e) => { setAudioFeatures({ ...audioFeatures, valence: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.valence} onChange={(e) => { setAudioFeatures({ ...audioFeatures, valence: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Energy</h3>
-                                <input className='inspiration__number' type="number" name='energy' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.energy} onChange={(e) => { setAudioFeatures({ ...audioFeatures, energy: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.energy} onChange={(e) => { setAudioFeatures({ ...audioFeatures, energy: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Instrumentalness</h3>
-                                <input className='inspiration__number' type="number" name='instrumentalness' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.instrumentalness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, instrumentalness: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.instrumentalness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, instrumentalness: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Liveness</h3>
-                                <input className='inspiration__number' type="number" name='liveness' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.liveness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, liveness: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.liveness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, liveness: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
-                            <div className='inspiration__query'>
-                                <h3 className='inspiration__parameter'>Speechiness</h3>
-                                <input className='inspiration__number' type="number" name='speechiness' readOnly={false} min={0} max={1} step={0.001} value={audioFeatures.speechiness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, speechiness: e.target.value }) }} />
-                                <input className='inspiration__range' type="range" min={0} max={1} step={0.001} value={audioFeatures.speechiness} onChange={(e) => { setAudioFeatures({ ...audioFeatures, speechiness: e.target.value }) }} />
-                                <p className='inspiration__value'>0</p>
-                                <p className='inspiration__value'>1</p>
-                            </div>
+                            <InspirationSlider audioFeatureName={"acousticness"} audioFeatureValue={audioFeatures.acousticness} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
+                            <InspirationSlider audioFeatureName={"danceability"} audioFeatureValue={audioFeatures.danceability} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
+                            <InspirationSlider audioFeatureName={"valence"} audioFeatureValue={audioFeatures.valence} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
+                            <InspirationSlider audioFeatureName={"energy"} audioFeatureValue={audioFeatures.energy} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />    
+                            <InspirationSlider audioFeatureName={"instrumentalness"} audioFeatureValue={audioFeatures.instrumentalness} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
+                            <InspirationSlider audioFeatureName={"liveness"} audioFeatureValue={audioFeatures.liveness} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
+                            <InspirationSlider audioFeatureName={"speechiness"} audioFeatureValue={audioFeatures.speechiness} audioFeatures={audioFeatures} setAudioFeatures={setAudioFeatures} />
                         </div>
                         <div className='inspiration__otherQueries'>
                             <div className='inspiration__otherQuery'>
@@ -236,7 +195,6 @@ function Inspiration({ explainedIns, setExplainedIns, setExplainedStep1Ins, user
                                 // <a className='inspiration__save' href={`${URL}/auth/spotify`}>{user.spotify_id}</a>
                                 ""
                         }
-
                         <div className='inspiration__tracks'>
                             {playlist === null ? "" :
                                 playlist.map((track) => {

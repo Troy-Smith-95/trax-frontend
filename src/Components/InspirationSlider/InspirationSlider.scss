@@ -1,0 +1,49 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.inspirationSlider {
+
+    &__query {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+        width: 20%;
+        min-width: 15.625rem;
+    }
+
+    &__parameter {
+        font-size: 1rem;
+        margin-top: 0;
+        text-transform: capitalize;
+    }
+
+    &__number {
+        height: 1.75rem;
+        background-color: $primary-colour-background;
+        border: none;
+        color: $primary-colour-text;
+        border-radius: 0.75rem;
+        padding: 0.5rem 0.5rem;
+        width: 5.5rem;
+        border: none;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1rem;
+
+        &:focus {
+            outline: 0.15rem $primary-colour-accent solid;
+        }
+    }
+
+    &__range {
+        width: 100%;
+    }
+
+
+    &__value {
+        margin: 0.25rem 0.15rem 0 0.15rem;
+        font-size: 1rem;
+    }
+}
