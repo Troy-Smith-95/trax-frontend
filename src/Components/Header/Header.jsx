@@ -27,7 +27,6 @@ function Header({ auth, setAuth }) {
         sessionStorage.removeItem('authToken');
     }
 
-
     return (
         <>
             <header className='header'>

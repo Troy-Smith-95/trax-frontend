@@ -117,7 +117,6 @@ function Inspiration({ explainedIns, setExplainedIns, setExplainedStep1Ins, user
         }
     }
 
-
     if (!genres) {
         return (
             <></>

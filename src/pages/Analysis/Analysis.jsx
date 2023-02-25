@@ -306,7 +306,6 @@ function Analysis({ explained, setExplained, setExplainedStep1 }) {
             </div>
         </section>
     );
-
 }
 
 export default Analysis;
